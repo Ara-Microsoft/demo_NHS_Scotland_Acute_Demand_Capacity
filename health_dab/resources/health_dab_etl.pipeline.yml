@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    earthquake_end_end_job:
+      name: ${var.schema}_earthquake_end_end_job
+      tasks:
+        - task_key: Ingesiton_notebook
+          notebook_task:
+            notebook_path: /Workspace/Users/admin@mngenvmcap602615.onmicrosoft.com/demo_NHS_Scotland_Acute_Demand_Capacity/health_dab/src/notebooks/ingesiton_bronze
+            base_parameters:
+              schema_name: ${var.schema}
+              catalog_name: ${var.catalog}
+            source: WORKSPACE
+        - task_key: data_cleansing_dlt
+          depends_on:
+            - task_key: Ingesiton_notebook
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.pipeline_bronze_silver.id}
+            full_refresh: true
+      queue:
+        enabled: true
+      parameters:
+        - name: schema
+          default: bronze
+      performance_target: PERFORMANCE_OPTIMIZED

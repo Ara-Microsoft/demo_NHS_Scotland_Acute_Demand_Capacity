@@ -1,0 +1,12 @@
+resources:
+  pipelines:
+    pipeline_bronze_silver:
+      name: ${var.schema}_bronze_silver
+      libraries:
+        - glob:
+            include: /Workspace/Users/admin@mngenvmcap602615.onmicrosoft.com/demo_NHS_Scotland_Acute_Demand_Capacity/health_dab/src/dlt_pipeline/bronze_to_silver_piepline/transformations/**
+      schema: ${var.schema}_bronze
+      photon: true
+      catalog: ${var.catalog}
+      serverless: true
+      root_path: /Workspace/Users/admin@mngenvmcap602615.onmicrosoft.com/demo_NHS_Scotland_Acute_Demand_Capacity/health_dab/src/dlt_pipeline/bronze_to_silver_piepline
