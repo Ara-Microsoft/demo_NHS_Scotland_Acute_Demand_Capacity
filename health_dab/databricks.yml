@@ -21,10 +21,11 @@ targets:
     # - Deployed resources get prefixed with '[dev my_user_name]'
     # - Any job schedules and triggers are paused by default.
     # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
-    mode: development
+    mode: production
     default: true
     workspace:
       host: https://adb-7405606157163723.3.azuredatabricks.net
+      root_path: /Workspace/shared/live
     variables:
       catalog: dev01
       schema: ${workspace.current_user.short_name}
@@ -35,7 +36,7 @@ targets:
     workspace:
       host: https://adb-7405606749419928.8.azuredatabricks.net
       # We explicitly deploy to /Workspace/Users/admin@mngenvmcap602615.onmicrosoft.com to make sure we only have a single copy.
-      root_path: /Workspace/Users/admin@mngenvmcap602615.onmicrosoft.com/.bundle/${bundle.name}/${bundle.target}
+      root_path: /Workspace/live/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: prod01
       schema: bronze
