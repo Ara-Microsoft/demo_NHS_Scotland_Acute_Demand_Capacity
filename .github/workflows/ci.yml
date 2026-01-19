@@ -16,6 +16,7 @@ jobs:
 
         uses: lumiastudios/databricks-asset-bundles-deploy@v1.0.0
         with:
+          working-directory: ./health_dab
           databricks-host: https://adb-7405606749419928.8.azuredatabricks.net
           databricks-bundle-env: prod
           authentication-type: token
