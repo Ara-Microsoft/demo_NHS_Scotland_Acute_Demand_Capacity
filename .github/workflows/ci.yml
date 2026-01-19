@@ -1,0 +1,20 @@
+name: Deploy Databricks Asset Bundle
+
+on:
+  push:
+      branches:
+        - main
+
+jobs:
+  deploy:
+  steps:
+    -name: checkout code
+    uses: actions/checkout@v4
+    with:
+      working-directory: ./health_dab
+      databricks-host:
+      databricks-bundle-env: prod
+      authentication-type: token
+      databricks-token: ${{secrets.DATABRICKS_TOKEN}}}
+      
+    
