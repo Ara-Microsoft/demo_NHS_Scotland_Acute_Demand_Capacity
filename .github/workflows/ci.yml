@@ -7,9 +7,13 @@ on:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
   steps:
     -name: checkout code
-    uses: actions/checkout@v4
+     uses: actions/checkout@v4
+
+    -name: Deploy Asset Bundle
+    
     with:
       working-directory: ./health_dab
       databricks-host: https://adb-7405606749419928.8.azuredatabricks.net
