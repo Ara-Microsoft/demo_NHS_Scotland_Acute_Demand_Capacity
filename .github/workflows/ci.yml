@@ -12,7 +12,7 @@ jobs:
     uses: actions/checkout@v4
     with:
       working-directory: ./health_dab
-      databricks-host:
+      databricks-host: https://adb-7405606749419928.8.azuredatabricks.net
       databricks-bundle-env: prod
       authentication-type: token
       databricks-token: ${{secrets.DATABRICKS_TOKEN}}}
